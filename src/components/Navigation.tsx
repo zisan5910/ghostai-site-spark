@@ -1,7 +1,7 @@
+
 import { useState, useEffect } from 'react';
 import { Menu, X, Languages } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import { cn } from '../lib/utils';
 
 interface NavigationProps {
@@ -25,10 +25,6 @@ const Navigation = ({
 }: NavigationProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { ref, inView } = useInView({
-    threshold: 0,
-    initialInView: true,
-  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,7 +38,7 @@ const Navigation = ({
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const getIconColor = (id: string) => {
-    const colors = {
+    const colors: { [key: string]: string } = {
       profile: 'text-indigo-500',
       education: 'text-blue-500',
       courses: 'text-emerald-500',
@@ -51,14 +47,13 @@ const Navigation = ({
       skills: 'text-purple-500',
       family: 'text-pink-500',
       contact: 'text-cyan-500',
-      share: 'text-teal-500',
+      'social-links': 'text-teal-500',
     };
-    return colors[id.toLowerCase()] || 'text-gray-500';
+    return colors[id] || 'text-gray-500';
   };
 
   return (
     <motion.nav
-      ref={ref}
       initial={{ y: -100 }}
       animate={{
         y: 0,
@@ -133,7 +128,7 @@ const Navigation = ({
             ))}
           </div>
 
-          {/* Language Toggle Button with Translate Icon - Updated to match ghost theme */}
+          {/* Language Toggle Button */}
           <motion.button
             whileHover={{ 
               scale: 1.1,

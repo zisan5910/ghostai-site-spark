@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Element, scroller } from 'react-scroll';
 import { UserCircle, School, BookOpen, Briefcase, FileBadge, Code, HeartHandshake, Mail, Share2 } from 'lucide-react';
@@ -115,10 +116,7 @@ function App() {
       </main>
 
       <Element name="footer">
-        <Footer
-          language={language}
-          content={content}
-        />
+        <Footer language={language} />
       </Element>
 
       <FloatingMenu />
