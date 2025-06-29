@@ -15,7 +15,6 @@ import Information from './components/Information';
 import Education from './components/Education';
 import Experience from './components/Experience';
 import Footer from './components/Footer';
-import InstallPWA from './components/InstallPWA';
 import { content, certificates } from './data/content';
 
 function App() {
@@ -75,8 +74,6 @@ function App() {
         language={language}
         setLanguage={setLanguage}
       />
-
-      <InstallPWA language={language} />
 
       <ProfileSection
         language={language}
